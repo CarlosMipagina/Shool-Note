@@ -1,0 +1,59 @@
+<div class="row">
+ <div class="col-4">
+	<mat-tab-group dynamicHeight [ngClass]="{'tab': true}">
+	<!--  formulario de ingreso -->
+		<mat-tab label="INGRESAR" [ngClass]="{'mat-tab-label-content': false}">
+			<div class="form-autenticacion">
+			 	<form [formGroup]="formLogin" (ngSubmit)="login(form)" novalidate>
+					<div class="form-group">
+						<label for="usuario" class="label-1">Ingrese  el usuario</label>
+						<input type="email" class="form-control input-1" id="usuario" 
+						 aria-describedby="emailHelp" placeholder="Correo Electronico "
+						name="usuario" formControlName="usuario">
+						<div *ngIf="formLogin.get('usuario').errors 
+								&& formLogin.get('usuario').dirty">
+							<small  class="form-text text-muted mesage "
+								*ngIf="formLogin.get('usuario').hasError('required')">
+								El Usuario  no es valido
+								</small>
+							<small  class="form-text text-muted mesage"
+								*ngIf="formLogin.get('usuario').hasError('email')">
+								El correo electronico no valido</small>
+						</div>
+						
+						
+					</div>
+					<div class="form-group">
+						<label for="password" class="label-1">Ingrese la Clave</label>
+						<input type="password" class="form-control  input-1" id="password" 
+						 placeholder="Clave  de Ingreso"  formControlName="password">
+						 <div *ngIf="formLogin.get('password').errors
+						 			&& formLogin.get('password'.dirty)">
+							<small  class="form-text text-muted mesage"
+							 *ngIf="formLogin.get('password').hasError(required)">
+									EL passwor es  requerido</small>	 
+						</div>
+						
+					</div>
+					<button type="submit" 
+						class="btn btn-primary form-control btn-button-1"
+						[disabled]="formLogin.invalid">INGRESAR</button>
+				</form>
+			</div>
+		</mat-tab>
+		<!-- Fin  fomulario  de  ingreso -->
+		<mat-tab label="REGISTRAR">
+			<div class="example-large-box mat-elevation-z4">
+	
+			</div>
+		</mat-tab>
+	</mat-tab-group>
+	<footer class="footer">
+		
+		<h4><fa-icon [icon]="faCoffee"></fa-icon></h4>
+	</footer>
+ </div>
+ <div class="col-8">
+ <img  class="img" src="./assets/img/slider_1.jpg" alt="">
+ </div>
+</div>
